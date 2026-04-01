@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sonalika Photography — Curating Visual Narratives</title>
+<meta name="description" content="Sonalika Photography by Suresh Krisna T — Specialized narrative photographer crafting visual stories through weddings, pre-weddings, portraits and events."/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#574500",
+              "surface-tint": "#735c00",
+              "secondary-fixed": "#f7e1a6",
+              "surface": "#f9f9f9",
+              "surface-container-low": "#f3f3f3",
+              "tertiary-container": "#97b0ff",
+              "on-secondary-fixed-variant": "#544519",
+              "on-primary-container": "#554300",
+              "surface-container": "#eeeeee",
+              "on-tertiary-fixed-variant": "#27438a",
+              "error": "#ba1a1a",
+              "on-surface": "#1a1c1c",
+              "on-secondary-container": "#736334",
+              "on-surface-variant": "#4d4635",
+              "on-error-container": "#93000a",
+              "surface-dim": "#dadada",
+              "background": "#f9f9f9",
+              "inverse-on-surface": "#f1f1f1",
+              "surface-bright": "#f9f9f9",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "inverse-surface": "#2f3131",
+              "surface-container-high": "#e8e8e8",
+              "tertiary-fixed": "#dbe1ff",
+              "error-container": "#ffdad6",
+              "on-tertiary-container": "#254188",
+              "on-secondary-fixed": "#241a00",
+              "secondary-container": "#f7e1a6",
+              "primary-fixed": "#ffe088",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed": "#241a00",
+              "on-tertiary": "#ffffff",
+              "on-tertiary-fixed": "#00174b",
+              "tertiary": "#415ba4",
+              "inverse-primary": "#e9c349",
+              "on-background": "#1a1c1c",
+              "surface-variant": "#e2e2e2",
+              "primary": "#735c00",
+              "secondary": "#6d5d2f",
+              "outline": "#7f7663",
+              "secondary-fixed-dim": "#dac58d",
+              "tertiary-fixed-dim": "#b4c5ff",
+              "primary-container": "#d4af37",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e2e2e2",
+              "outline-variant": "#d0c5af",
+              "primary-fixed-dim": "#e9c349"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0px", "lg": "0px", "xl": "0px", "full": "9999px"},
+            animation: {
+              'infinite-scroll': 'infinite-scroll 40s linear infinite',
+              'shimmer': 'shimmer 3s ease-in-out infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+            },
+            keyframes: {
+              'infinite-scroll': {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(-50%)' },
+              },
+              'shimmer': {
+                '0%, 100%': { backgroundPosition: '-200% center' },
+                '50%': { backgroundPosition: '200% center' },
+              },
+              'float': {
+                '0%, 100%': { transform: 'translateY(0px)' },
+                '50%': { transform: 'translateY(-20px)' },
+              },
+              'pulse-glow': {
+                '0%, 100%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)' },
+                '50%': { boxShadow: '0 0 40px rgba(212, 175, 55, 0.6)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
+<style>
+  /* ===== 3D Tilt Cards (Services) ===== */
+  .perspective-container {
+    perspective: 1000px;
+  }
+  .tilt-card {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+  }
+  .tilt-card:hover {
+    transform: rotateX(5deg) rotateY(5deg) scale(1.05);
+    box-shadow: -10px 20px 40px rgba(0,0,0,0.1), 0 10px 10px rgba(115, 92, 0, 0.05);
+  }
+  .tilt-card:hover img {
+    transform: translateZ(20px);
+  }
+
+  /* ===== Gallery Scroll ===== */
+  .animate-infinite-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  /* ===== Portrait Parallax ===== */
+  .portrait-parallax-container {
+    perspective: 1500px;
+    transition: transform 0.2s ease-out;
+  }
+  .portrait-parallax-content {
+    transition: transform 0.1s ease-out;
+    transform-style: preserve-3d;
+  }
+  .portrait-image-wrapper {
+    overflow: hidden;
+    transform: translateZ(0);
+  }
+  .portrait-image-zoom {
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .portrait-parallax-container:hover .portrait-image-zoom {
+    transform: scale(1.08);
+  }
+
+  /* ===== Scroll Reveal Animations ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ===== Premium Shimmer Text ===== */
+  .shimmer-text {
+    background: linear-gradient(
+      90deg,
+      #735c00 0%,
+      #d4af37 25%,
+      #f5d66a 50%,
+      #d4af37 75%,
+      #735c00 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+  }
+
+  /* ===== Gallery Image Overlay ===== */
+  .gallery-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.4) 100%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+  .gallery-item:hover::after {
+    opacity: 1;
+  }
+
+  /* ===== Service Card Glow Border ===== */
+  .service-card-glow {
+    position: relative;
+  }
+  .service-card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.3) 50%, transparent 70%);
+    background-size: 300% 300%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+  }
+  .service-card-glow:hover::before {
+    opacity: 1;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  /* ===== Floating WhatsApp Button ===== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #25D366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.12);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+  }
+  .whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  /* ===== Contact Icon Styles ===== */
+  .contact-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .contact-icon-wrapper:hover {
+    transform: scale(1.1);
+  }
+  .contact-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ===== Hero Decorative Elements ===== */
+  .hero-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    animation: shimmer 4s ease-in-out infinite;
+    background-size: 200% auto;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+
+<!-- ============================================ -->
+<!-- TopNavBar with Logo -->
+<!-- ============================================ -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#f9f9f9]/70 dark:bg-stone-900/70 backdrop-blur-xl border-b border-primary/5">
+  <a href="#" class="flex items-center gap-3 group">
+    <img src="../images/Logo.png" alt="Sonalika Photography Logo" class="w-14 h-14 md:w-16 md:h-16 object-contain transition-transform duration-500 group-hover:scale-110"/>
+    <div class="hidden sm:block">
+      <div class="text-lg md:text-xl font-headline uppercase tracking-[0.15em] text-[#735c00] dark:text-[#D4AF37] leading-tight">
+        Sonalika
+      </div>
+      <div class="text-[8px] font-label uppercase tracking-[0.3em] text-outline-variant leading-tight">
+        Photography
+      </div>
+    </div>
+  </a>
+  <div class="hidden md:flex gap-10 items-center">
+    <a class="text-[#735c00] dark:text-[#D4AF37] border-b border-[#D4AF37]/30 pb-1 font-serif italic tracking-tight" href="#gallery">Gallery</a>
+    <a class="text-stone-600 dark:text-stone-400 font-medium tracking-widest text-[10px] uppercase hover:text-[#735c00] dark:hover:text-[#D4AF37] transition-colors duration-500" href="#about">About</a>
+    <a class="text-stone-600 dark:text-stone-400 font-medium tracking-widest text-[10px] uppercase hover:text-[#735c00] dark:hover:text-[#D4AF37] transition-colors duration-500" href="#services">Services</a>
+    <a class="text-stone-600 dark:text-stone-400 font-medium tracking-widest text-[10px] uppercase hover:text-[#735c00] dark:hover:text-[#D4AF37] transition-colors duration-500" href="#contact">Contact</a>
+  </div>
+  <button class="md:hidden text-primary" id="mobileMenuBtn" aria-label="Toggle menu">
+    <span class="material-symbols-outlined">menu</span>
+  </button>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div id="mobileMenu" class="fixed inset-0 z-[60] bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 transition-all duration-500 opacity-0 pointer-events-none">
+  <button id="mobileMenuClose" class="absolute top-6 right-6 text-primary" aria-label="Close menu">
+    <span class="material-symbols-outlined text-3xl">close</span>
+  </button>
+  <a class="text-2xl font-headline italic text-primary tracking-wide" href="#gallery" onclick="closeMobileMenu()">Gallery</a>
+  <a class="text-2xl font-headline italic text-on-surface tracking-wide" href="#about" onclick="closeMobileMenu()">About</a>
+  <a class="text-2xl font-headline italic text-on-surface tracking-wide" href="#services" onclick="closeMobileMenu()">Services</a>
+  <a class="text-2xl font-headline italic text-on-surface tracking-wide" href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<main>
+<!-- ============================================ -->
+<!-- Hero Section -->
+<!-- ============================================ -->
+<section class="relative h-screen flex flex-col items-center justify-center bg-surface-container-lowest px-4 overflow-hidden">
+  <!-- Background decorative elements -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/3 rounded-full blur-[120px] animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-container/5 rounded-full blur-[100px] animate-float" style="animation-delay: -3s;"></div>
+  </div>
+
+  <div class="z-10 text-center space-y-6 reveal" id="heroContent">
+    <h1 class="text-5xl md:text-8xl font-headline italic tracking-tighter text-on-surface">
+      Capturing <span class="shimmer-text italic">Essence</span>
+    </h1>
+
+    <div class="hero-line w-32 md:w-48 mx-auto"></div>
+
+    <p class="text-xs md:text-sm font-label uppercase tracking-[0.4em] text-outline max-w-md mx-auto">
+      Sonalika Photography — Curating Visual Narratives
+    </p>
+
+  </div>
+
+  <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+    <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- About Section -->
+<!-- ============================================ -->
+<section class="py-24 md:py-48 px-6 md:px-24 bg-surface" id="about">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center max-w-7xl mx-auto">
+    <!-- Portrait with Parallax -->
+    <div class="relative portrait-parallax-container group reveal" id="portraitContainer">
+      <div class="portrait-parallax-content" id="portraitContent">
+        <div class="portrait-image-wrapper shadow-2xl border-[12px] border-white dark:border-stone-800">
+          <img alt="Professional portrait of Suresh Krisna T" class="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 portrait-image-zoom" src="../images/Suresh.jpeg"/>
+        </div>
+      </div>
+      <div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/5 -z-10 blur-3xl opacity-60"></div>
+      <!-- Decorative frame corner -->
+      <div class="absolute -top-4 -left-4 w-12 h-12 border-t-2 border-l-2 border-primary-container/40 pointer-events-none"></div>
+      <div class="absolute -bottom-4 -right-4 w-12 h-12 border-b-2 border-r-2 border-primary-container/40 pointer-events-none"></div>
+    </div>
+
+    <!-- Bio Text -->
+    <div class="space-y-8 reveal reveal-delay-2">
+      <div class="inline-block border-l-2 border-primary-container pl-6">
+        <h2 class="text-5xl md:text-7xl font-headline italic text-primary leading-tight">
+          Suresh Krisna T
+        </h2>
+        <p class="text-xs font-label uppercase tracking-[0.4em] text-outline mt-2">Specialized Narrative Photographer</p>
+      </div>
+      <p class="text-lg md:text-xl font-headline leading-relaxed text-on-surface-variant max-w-xl"">
+        I don't capture moments—I construct them. Every frame is an intentional composition where light, emotion, and silence are engineered into a single visual language. Stripped of excess, each image reveals depth, precision, and quiet intensity. Rooted in minimalism and driven by a forward-looking aesthetic, my work transforms the ordinary into something enduring—something designed to outlive the moment itself. This is not photography. This is controlled perception.
+      </p>
+      <div class="pt-4">
+        <a class="inline-block py-3 px-8 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label uppercase tracking-widest text-xs hover:opacity-90 transition-opacity duration-300 hover:shadow-lg hover:shadow-primary/20" href="#services">
+          The Philosophy
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Gallery Section (The Exhibition) -->
+<!-- ============================================ -->
+<section class="bg-surface-container-low py-24 overflow-hidden" id="gallery">
+  <div class="px-6 md:px-24 mb-16 flex justify-between items-end reveal">
+    <h3 class="text-3xl font-headline italic tracking-tight">The Exhibition</h3>
+    <span class="font-label text-[10px] uppercase tracking-widest text-outline">Continuous Perspective</span>
+  </div>
+
+  <!-- Infinite Scroll Gallery — Uniform Heights -->
+  <div class="w-full inline-flex flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+    <div class="flex items-center justify-center md:justify-start [&_img]:max-w-none animate-infinite-scroll">
+      <!-- Original set -->
+      <div class="flex gap-6 md:gap-8 px-4 items-center">
+        <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Wedding scene" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/1.jpeg"/>
+        </div>
+        <div class="shrink-0 w-[55vw] md:w-[30vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Editorial fashion" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/2.jpeg"/>
+        </div>
+        <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Landscape abstract" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/3.jpeg"/>
+        </div>
+        <div class="shrink-0 w-[45vw] md:w-[26vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Wedding ceremony" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/Wedding.jpeg"/>
+        </div>
+      </div>
+      <!-- Duplicate set for seamless loop -->
+      <div class="flex gap-6 md:gap-8 px-4 items-center">
+        <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Wedding scene" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/1.jpeg"/>
+        </div>
+        <div class="shrink-0 w-[55vw] md:w-[30vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Editorial fashion" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/2.jpeg"/>
+        </div>
+        <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Landscape abstract" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/3.jpeg"/>
+        </div>
+        <div class="shrink-0 w-[45vw] md:w-[26vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
+          <img alt="Wedding ceremony" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/Wedding.jpeg"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Services Section (Curated Experiences) -->
+<!-- ============================================ -->
+<section class="py-24 md:py-48 px-6 md:px-24 bg-surface-container-lowest" id="services">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-24">
+      <h2 class="text-4xl md:text-6xl font-headline italic text-on-surface mb-4">Curated Experiences</h2>
+      <div class="w-16 h-[1px] bg-primary-container mx-auto"></div>
+    </div>
+
+    <!-- Service Grid — Clean 3-column with uniform card sizing -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-x-12 md:gap-y-20 perspective-container">
+
+      <!-- Service 1: Wedding -->
+      <div class="group cursor-pointer tilt-card">
+        <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
+          <img alt="Wedding Photography" class="w-full h-full object-cover transition-transform duration-700" data-alt="luxury wedding banquet table with white flowers and crystal glasses, soft morning sunlight through window" src="/images/wed.jpg"/>
+        </div>
+        <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Wedding</h4>
+      </div>
+
+      <!-- Service 2: Pre-wedding -->
+      <div class="group cursor-pointer tilt-card">
+        <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
+          <img alt="Pre-wedding Photography" class="w-full h-full object-cover transition-transform duration-700" data-alt="couple walking in a field of tall grass during golden hour, silhouettes against a glowing warm sun" src="/images/pre.jpg"/>
+        </div>
+        <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Pre-wedding</h4>
+      </div>
+
+      <!-- Service 3: Bangle Wearing -->
+      <div class="group cursor-pointer tilt-card">
+        <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
+          <img alt="Bangle wearing" class="w-full h-full object-cover transition-transform duration-700" data-alt="close up of intricate gold jewellery on hands with henna patterns, bright vibrant traditional ceremony colors" src="/images/baby.jpg"/>
+        </div>
+        <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Baby Shower</h4>
+      </div>
+
+      <!-- Service 4: Baby Naming -->
+      <div class="group cursor-pointer tilt-card">
+        <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
+          <img alt="Baby naming" class="w-full h-full object-cover transition-transform duration-700" data-alt="soft focused image of a baby's tiny hand grasping a finger, clean white nursery lighting and soft textiles" src="/images/name.jpg"/>
+        </div>
+        <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Naming Ceremony</h4>
+      </div>
+
+      <!-- Service 5: Birthday -->
+      <div class="group cursor-pointer tilt-card">
+        <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
+          <img alt="Birthday" class="w-full h-full object-cover transition-transform duration-700" data-alt="elegant minimalist birthday cake with single candle on a marble stand, clean studio lighting" src="/images/birth.jpg"/>
+        </div>
+        <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Birthday</h4>
+      </div>
+
+      <!-- Service 6: Corporate -->
+      <div class="group cursor-pointer tilt-card">
+        <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
+          <img alt="Corporate" class="w-full h-full object-cover transition-transform duration-700" data-alt="modern glass office building reflection at dusk, corporate professional aesthetic with deep blue tones" src="/images/cor.jpg"/>
+        </div>
+        <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Corporate</h4>
+      </div>
+
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============================================ -->
+<!-- Footer with Logo & Brand Icons -->
+<!-- ============================================ -->
+<footer class="w-full py-24 bg-surface-container-lowest border-t border-outline-variant/10" id="contact">
+  <div class="container mx-auto px-6 md:px-24">
+
+    <!-- Top Brand Area -->
+    <div class="flex flex-col items-center mb-16 reveal">
+      <img src="../images/Logo.png" alt="Sonalika Photography Logo" class="w-20 h-20 md:w-24 md:h-24 object-contain mb-4 opacity-80"/>
+      <div class="text-3xl md:text-5xl font-headline uppercase tracking-[0.28em] text-primary mb-2">Sonalika Photography</div>
+      <div class="text-xs md:text-sm font-label uppercase tracking-[0.45em] text-outline-variant">Curating Visual Narratives</div>
+    </div>
+
+    <!-- Three Columns -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 border-t border-primary/20 pt-16 items-start">
+
+      <!-- Column 1: The Brand -->
+      <div class="space-y-5 reveal reveal-delay-1">
+        <h5 class="font-label text-xs uppercase tracking-[0.24em] text-primary">The Brand</h5>
+        <div class="space-y-3 max-w-xs">
+          <p class="font-headline text-2xl uppercase tracking-[0.15em] text-[#735c00] dark:text-[#D4AF37]">Sonalika</p>
+          <p class="text-stone-500 font-serif text-xs tracking-[0.28em] uppercase italic">Photography</p>
+          <p class="text-base leading-relaxed text-stone-500">
+            Elegant visual storytelling for weddings, portraits, and milestone celebrations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Column 2: Digital Inquiries -->
+      <div class="space-y-5 reveal reveal-delay-2">
+        <h5 class="font-label text-xs uppercase tracking-[0.24em] text-primary">Digital Inquiries</h5>
+        <div class="space-y-4">
+          <!-- Email with SVG icon -->
+          <a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 font-serif text-base tracking-wide hover:text-primary transition-colors group" href="mailto:sonalikasonalika07@gmail.com">
+            <div class="contact-icon-wrapper bg-red-50 group-hover:shadow-md group-hover:shadow-red-200/50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#EA4335" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <polyline points="22,4 12,13 2,4"/>
+              </svg>
+            </div>
+            <span class="truncate">sonalikasonalika07@gmail.com</span>
+          </a>
+
+          <!-- WhatsApp with SVG icon -->
+          <a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 font-serif text-base tracking-wide hover:text-primary transition-colors group" href="https://wa.me/919345578780">
+            <div class="contact-icon-wrapper bg-green-50 group-hover:shadow-md group-hover:shadow-green-200/50">
+              <svg viewBox="0 0 24 24" fill="#25D366">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+              </svg>
+            </div>
+            <span>+91 93455 78780</span>
+          </a>
+
+          <!-- Phone with SVG icon -->
+          <a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 font-serif text-base tracking-wide hover:text-primary transition-colors group" href="tel:+919345578780">
+            <div class="contact-icon-wrapper bg-blue-50 group-hover:shadow-md group-hover:shadow-blue-200/50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+              </svg>
+            </div>
+            <span>+91 93455 78780</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 3: Connections -->
+      <div class="space-y-5 reveal reveal-delay-3">
+        <h5 class="font-label text-xs uppercase tracking-[0.24em] text-primary">Connections</h5>
+        <div class="flex flex-col gap-4">
+          <!-- Instagram with SVG logo -->
+          <a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 font-serif text-base tracking-wide hover:text-primary transition-colors italic group" href="https://www.instagram.com/sonalika_photography?igsh=cjd0M2d5ZWc3M3M0" target="_blank">
+            <div class="contact-icon-wrapper bg-gradient-to-br from-pink-50 to-purple-50 group-hover:shadow-md group-hover:shadow-pink-200/50">
+              <svg viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="url(#ig-gradient)" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="5" stroke="url(#ig-gradient)" stroke-width="1.8"/>
+                <circle cx="17.5" cy="6.5" r="1.5" fill="url(#ig-gradient)"/>
+                <defs>
+                  <linearGradient id="ig-gradient" x1="2" y1="22" x2="22" y2="2">
+                    <stop stop-color="#F58529"/>
+                    <stop offset="0.5" stop-color="#DD2A7B"/>
+                    <stop offset="1" stop-color="#8134AF"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <span>Instagram</span>
+          </a>
+
+          <!-- Portfolio link -->
+          <a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 font-serif text-base tracking-wide hover:text-primary transition-colors italic group" href="#">
+            <div class="contact-icon-wrapper bg-amber-50 group-hover:shadow-md group-hover:shadow-amber-200/50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <span>Vogue Portfolio</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="mt-24 pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="font-serif text-[11px] tracking-[0.26em] text-stone-400 uppercase">
+        © 2024 Sonalika Photography. All rights reserved.
+      </div>
+      <div class="flex gap-8 text-[11px] font-label uppercase tracking-[0.22em] text-stone-400">
+        <a class="hover:text-primary transition-colors" href="#">Privacy</a>
+        <a class="hover:text-primary transition-colors" href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================ -->
+<!-- Floating WhatsApp Button -->
+<!-- ============================================ -->
+<a href="https://wa.me/919345578780" target="_blank" class="whatsapp-float animate-pulse-glow" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ============================================ -->
+<!-- Scripts -->
+<!-- ============================================ -->
+<script>
+  // ===== Portrait Parallax Interaction =====
+  const container = document.getElementById('portraitContainer');
+  const content = document.getElementById('portraitContent');
+
+  let currentX = 0;
+  let currentY = 0;
+  let targetX = 0;
+  let targetY = 0;
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    targetX = ((y - centerY) / centerY) * -15;
+    targetY = ((x - centerX) / centerX) * 15;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+  });
+
+  function lerp() {
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
+    content.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+    requestAnimationFrame(lerp);
+  }
+  lerp();
+
+  // ===== Scroll Reveal Animation =====
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // ===== Hero Section Immediate Reveal =====
+  setTimeout(() => {
+    const hero = document.getElementById('heroContent');
+    if (hero) hero.classList.add('revealed');
+  }, 200);
+
+  // ===== Mobile Menu =====
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+    mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+  });
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+  }
+
+  mobileMenuClose.addEventListener('click', closeMobileMenu);
+
+  // ===== Smooth Scroll =====
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
