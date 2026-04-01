@@ -4,6 +4,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Sonalika Photography — Curating Visual Narratives</title>
+<link rel="icon" type="image/png" href="/images/Logo1.png">
 <meta name="description" content="Sonalika Photography by Suresh Krisna T — Specialized narrative photographer crafting visual stories through weddings, pre-weddings, portraits and events."/>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -148,18 +149,18 @@
   /* ===== Scroll Reveal Animations ===== */
   .reveal {
     opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(42px);
+    transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .reveal.revealed {
     opacity: 1;
     transform: translateY(0);
   }
-  .reveal-delay-1 { transition-delay: 0.1s; }
-  .reveal-delay-2 { transition-delay: 0.2s; }
-  .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
-  .reveal-delay-5 { transition-delay: 0.5s; }
+  .reveal-delay-1 { transition-delay: 0.04s; }
+  .reveal-delay-2 { transition-delay: 0.08s; }
+  .reveal-delay-3 { transition-delay: 0.12s; }
+  .reveal-delay-4 { transition-delay: 0.16s; }
+  .reveal-delay-5 { transition-delay: 0.2s; }
 
   /* ===== Premium Shimmer Text ===== */
   .shimmer-text {
@@ -381,12 +382,19 @@
   }
 
   @media (max-width: 768px) {
+    .hero-sequence-section {
+      --hero-nav-gap: 90px;
+    }
     .hero-sequence-stage {
-      padding-top: var(--hero-nav-gap);
+      padding-top: calc(var(--hero-nav-gap) + 4px);
     }
     .hero-sequence-shell {
-      width: calc(100vw - 16px);
-      padding: 6px;
+      width: calc(100vw - 12px);
+      height: calc(100vh - var(--hero-nav-gap) - 18px);
+      padding: 8px;
+      box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
     }
   }
 </style>
@@ -820,6 +828,7 @@
     let targetSequenceProgress = 0;
     let heroReleaseAnimating = false;
     let heroReleaseTimeoutId = null;
+    let touchSequenceY = null;
 
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
 
@@ -842,14 +851,10 @@
       setHeroScrollLock(false);
 
       const releaseDistance = window.innerWidth < 768
-        ? 72
-        : clamp(Math.abs(deltaY) * 0.16, 72, 128);
+        ? 96
+        : clamp(Math.abs(deltaY) * 0.26, 108, 180);
       const aboutStart = aboutSection ? aboutSection.offsetTop : window.innerHeight;
-
-      window.scrollTo({
-        top: Math.min(releaseDistance, aboutStart),
-        behavior: 'smooth'
-      });
+      window.scrollTo(0, Math.min(releaseDistance, aboutStart));
 
       if (heroReleaseTimeoutId) {
         window.clearTimeout(heroReleaseTimeoutId);
@@ -857,7 +862,7 @@
 
       heroReleaseTimeoutId = window.setTimeout(() => {
         heroReleaseAnimating = false;
-      }, 320);
+      }, 120);
     };
 
     const drawImageCover = (image) => {
@@ -873,7 +878,8 @@
 
       const canvasWidth = heroSequenceCanvas.width;
       const canvasHeight = heroSequenceCanvas.height;
-      const matteInset = Math.round(Math.min(canvasWidth, canvasHeight) * (window.innerWidth < 768 ? 0.018 : 0.038));
+      const isMobileViewport = window.innerWidth < 768;
+      const matteInset = Math.round(Math.min(canvasWidth, canvasHeight) * (isMobileViewport ? 0.032 : 0.038));
       const stageWidth = Math.max(1, canvasWidth - (matteInset * 2));
       const stageHeight = Math.max(1, canvasHeight - (matteInset * 2));
       const imageRatio = image.naturalWidth / image.naturalHeight;
@@ -884,14 +890,29 @@
       let offsetX = matteInset;
       let offsetY = matteInset;
 
-      if (imageRatio > canvasRatio) {
-        drawHeight = stageHeight;
-        drawWidth = drawHeight * imageRatio;
+      if (isMobileViewport) {
+        const containScale = 0.92;
+
+        if (imageRatio > canvasRatio) {
+          drawWidth = stageWidth * containScale;
+          drawHeight = drawWidth / imageRatio;
+        } else {
+          drawHeight = stageHeight * containScale;
+          drawWidth = drawHeight * imageRatio;
+        }
+
         offsetX = matteInset + ((stageWidth - drawWidth) / 2);
-      } else {
-        drawWidth = stageWidth;
-        drawHeight = drawWidth / imageRatio;
         offsetY = matteInset + ((stageHeight - drawHeight) / 2);
+      } else {
+        if (imageRatio > canvasRatio) {
+          drawHeight = stageHeight;
+          drawWidth = drawHeight * imageRatio;
+          offsetX = matteInset + ((stageWidth - drawWidth) / 2);
+        } else {
+          drawWidth = stageWidth;
+          drawHeight = drawWidth / imageRatio;
+          offsetY = matteInset + ((stageHeight - drawHeight) / 2);
+        }
       }
 
       canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -905,16 +926,18 @@
     };
 
     const updateHero3D = (progress) => {
+      const isMobileViewport = window.innerWidth < 768;
+
       if (heroSequenceShell) {
-        const rotateY = (progress - 0.5) * 3.4;
-        const rotateX = 1.6 - (progress * 1.6);
-        const translateY = -3 + (progress * 6);
-        const scale = 1.008 - (progress * 0.008);
+        const rotateY = (progress - 0.5) * (isMobileViewport ? 1.2 : 3.4);
+        const rotateX = (isMobileViewport ? 0.75 : 1.6) - (progress * (isMobileViewport ? 0.75 : 1.6));
+        const translateY = (isMobileViewport ? -1 : -3) + (progress * (isMobileViewport ? 2 : 6));
+        const scale = (isMobileViewport ? 1.002 : 1.008) - (progress * (isMobileViewport ? 0.002 : 0.008));
         heroSequenceShell.style.transform = `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
       }
 
       if (heroSequenceFrame) {
-        const innerRotate = (progress - 0.5) * -1.2;
+        const innerRotate = (progress - 0.5) * (isMobileViewport ? -0.45 : -1.2);
         heroSequenceFrame.style.transform = `translateZ(0) rotateY(${innerRotate}deg) scale(1)`;
       }
     };
@@ -1071,6 +1094,52 @@
         stepHeroSequence(-180);
       }
     });
+
+    window.addEventListener('touchstart', (event) => {
+      if (event.touches.length !== 1) {
+        touchSequenceY = null;
+        return;
+      }
+
+      touchSequenceY = event.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (event) => {
+      if (window.innerWidth >= 768 || event.touches.length !== 1 || touchSequenceY === null) {
+        return;
+      }
+
+      const atHeroTop = window.scrollY <= 2;
+      if (!atHeroTop) {
+        touchSequenceY = event.touches[0].clientY;
+        return;
+      }
+
+      const currentTouchY = event.touches[0].clientY;
+      const deltaY = touchSequenceY - currentTouchY;
+      const shouldReleaseHero = targetSequenceProgress >= 0.9995 && deltaY > 0;
+      const shouldDriveSequence =
+        targetSequenceProgress < 0.9995 || (targetSequenceProgress > 0 && deltaY < 0);
+
+      if (shouldReleaseHero) {
+        event.preventDefault();
+        releaseHeroToAbout(deltaY * 5);
+        touchSequenceY = currentTouchY;
+        return;
+      }
+
+      if (!shouldDriveSequence || Math.abs(deltaY) < 2) {
+        return;
+      }
+
+      event.preventDefault();
+      stepHeroSequence(deltaY * 7);
+      touchSequenceY = currentTouchY;
+    }, { passive: false });
+
+    window.addEventListener('touchend', () => {
+      touchSequenceY = null;
+    }, { passive: true });
 
     window.addEventListener('scroll', () => {
       if (window.scrollY > 2) {
