@@ -264,6 +264,131 @@
     animation: shimmer 4s ease-in-out infinite;
     background-size: 200% auto;
   }
+
+  /* ===== Navbar States ===== */
+  .nav-link {
+    position: relative;
+    padding-bottom: 0.35rem;
+    color: rgba(255, 255, 255, 0.96);
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.34);
+    transition: color 0.35s ease, opacity 0.35s ease;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(212,175,55,0), rgba(212,175,55,0.9), rgba(212,175,55,0));
+    transform: scaleX(0.2);
+    opacity: 0;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    transform-origin: center;
+  }
+  .nav-link:hover,
+  .nav-link-active {
+    color: #f0cf63;
+  }
+  .nav-link:hover::after,
+  .nav-link-active::after {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  /* ===== Hero Sequence ===== */
+  .hero-sequence-section {
+    --hero-nav-gap: clamp(108px, 12vh, 140px);
+    position: relative;
+    height: 100vh;
+    min-height: 100vh;
+    overflow: clip;
+    background: #050608;
+  }
+  .hero-sequence-stage {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: var(--hero-nav-gap);
+    padding-bottom: 0;
+  }
+  .hero-sequence-shell {
+    position: relative;
+    width: calc(100vw - clamp(18px, 4vw, 96px));
+    height: calc(100vh - var(--hero-nav-gap) - clamp(6px, 1vh, 16px));
+    max-width: 1800px;
+    margin-inline: auto;
+    padding: clamp(8px, 1vw, 16px);
+    background:
+      linear-gradient(145deg, rgba(9, 12, 17, 0.92), rgba(21, 25, 32, 0.62)),
+      linear-gradient(145deg, rgba(212, 175, 55, 0.08), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(212, 175, 55, 0.18);
+    box-shadow:
+      0 28px 90px rgba(0, 0, 0, 0.34),
+      0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+    backdrop-filter: blur(14px);
+    perspective: 2200px;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transform-origin: center center;
+  }
+  .hero-sequence-frame {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, rgba(8, 10, 14, 0.96), rgba(4, 5, 8, 1)),
+      #050505;
+    transform-style: preserve-3d;
+  }
+  .hero-sequence-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(212,175,55,0.16);
+    pointer-events: none;
+    z-index: 4;
+  }
+  .hero-sequence-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0) 14%, rgba(0,0,0,0) 76%, rgba(0,0,0,0.24)),
+      radial-gradient(circle at center, rgba(255,255,255,0), rgba(0,0,0,0.12) 68%, rgba(0,0,0,0.26));
+    pointer-events: none;
+    z-index: 3;
+  }
+  .hero-sequence-canvas,
+  .hero-sequence-fallback {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+  .hero-sequence-canvas {
+    position: relative;
+    z-index: 2;
+  }
+  .hero-sequence-fallback {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    transition: opacity 0.35s ease;
+  }
+
+  @media (max-width: 768px) {
+    .hero-sequence-stage {
+      padding-top: var(--hero-nav-gap);
+    }
+    .hero-sequence-shell {
+      width: calc(100vw - 16px);
+      padding: 6px;
+    }
+  }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
@@ -271,23 +396,23 @@
 <!-- ============================================ -->
 <!-- TopNavBar with Logo -->
 <!-- ============================================ -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[#f9f9f9]/70 dark:bg-stone-900/70 backdrop-blur-xl border-b border-primary/5">
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-12 py-4 bg-[rgba(24,28,35,0.48)] backdrop-blur-[26px] shadow-[0_12px_40px_rgba(26,28,28,0.18)]">
   <a href="#" class="flex items-center gap-3 group">
     <img src="../images/Logo.png" alt="Sonalika Photography Logo" class="w-14 h-14 md:w-16 md:h-16 object-contain transition-transform duration-500 group-hover:scale-110"/>
     <div class="hidden sm:block">
-      <div class="text-lg md:text-xl font-headline uppercase tracking-[0.15em] text-[#735c00] dark:text-[#D4AF37] leading-tight">
+      <div class="text-lg md:text-xl font-headline uppercase tracking-[0.15em] text-[#f0cf63] leading-tight">
         Sonalika
       </div>
-      <div class="text-[8px] font-label uppercase tracking-[0.3em] text-outline-variant leading-tight">
+      <div class="text-[8px] font-label uppercase tracking-[0.3em] text-white/70 leading-tight">
         Photography
       </div>
     </div>
   </a>
   <div class="hidden md:flex gap-10 items-center">
-    <a class="text-[#735c00] dark:text-[#D4AF37] border-b border-[#D4AF37]/30 pb-1 font-serif italic tracking-tight" href="#gallery">Gallery</a>
-    <a class="text-stone-600 dark:text-stone-400 font-medium tracking-widest text-[10px] uppercase hover:text-[#735c00] dark:hover:text-[#D4AF37] transition-colors duration-500" href="#about">About</a>
-    <a class="text-stone-600 dark:text-stone-400 font-medium tracking-widest text-[10px] uppercase hover:text-[#735c00] dark:hover:text-[#D4AF37] transition-colors duration-500" href="#services">Services</a>
-    <a class="text-stone-600 dark:text-stone-400 font-medium tracking-widest text-[10px] uppercase hover:text-[#735c00] dark:hover:text-[#D4AF37] transition-colors duration-500" href="#contact">Contact</a>
+    <a class="nav-link font-semibold tracking-[0.22em] text-[11px] uppercase" data-nav-link href="#gallery">Gallery</a>
+    <a class="nav-link font-semibold tracking-[0.22em] text-[11px] uppercase" data-nav-link href="#about">About</a>
+    <a class="nav-link font-semibold tracking-[0.22em] text-[11px] uppercase" data-nav-link href="#services">Services</a>
+    <a class="nav-link font-semibold tracking-[0.22em] text-[11px] uppercase" data-nav-link href="#contact">Contact</a>
   </div>
   <button class="md:hidden text-primary" id="mobileMenuBtn" aria-label="Toggle menu">
     <span class="material-symbols-outlined">menu</span>
@@ -309,35 +434,27 @@
 <!-- ============================================ -->
 <!-- Hero Section -->
 <!-- ============================================ -->
-<section class="relative h-screen flex flex-col items-center justify-center bg-surface-container-lowest px-4 overflow-hidden">
+<section class="hero-sequence-section overflow-hidden" id="heroSequence">
   <!-- Background decorative elements -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden">
     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/3 rounded-full blur-[120px] animate-float"></div>
     <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary-container/5 rounded-full blur-[100px] animate-float" style="animation-delay: -3s;"></div>
   </div>
 
-  <div class="z-10 text-center space-y-6 reveal" id="heroContent">
-    <h1 class="text-5xl md:text-8xl font-headline italic tracking-tighter text-on-surface">
-      Capturing <span class="shimmer-text italic">Essence</span>
-    </h1>
-
-    <div class="hero-line w-32 md:w-48 mx-auto"></div>
-
-    <p class="text-xs md:text-sm font-label uppercase tracking-[0.4em] text-outline max-w-md mx-auto">
-      Sonalika Photography — Curating Visual Narratives
-    </p>
-
-  </div>
-
-  <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-    <span class="material-symbols-outlined">keyboard_double_arrow_down</span>
+  <div class="hero-sequence-stage">
+    <div class="hero-sequence-shell" id="heroContent">
+      <div class="hero-sequence-frame" id="heroSequenceFrame">
+        <img alt="Hero sequence fallback" class="hero-sequence-fallback" id="heroSequenceFallback" src="../Hero_camera/Robotic_camera_orbiting_202604011739_000.jpg"/>
+        <canvas aria-label="Animated hero frame sequence" class="hero-sequence-canvas" id="heroSequenceCanvas"></canvas>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============================================ -->
 <!-- About Section -->
 <!-- ============================================ -->
-<section class="py-24 md:py-48 px-6 md:px-24 bg-surface" id="about">
+<section class="pt-4 md:pt-6 pb-24 md:pb-40 px-6 md:px-24 bg-surface" id="about">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-32 items-center max-w-7xl mx-auto">
     <!-- Portrait with Parallax -->
     <div class="relative portrait-parallax-container group reveal" id="portraitContainer">
@@ -360,7 +477,7 @@
         </h2>
         <p class="text-xs font-label uppercase tracking-[0.4em] text-outline mt-2">Specialized Narrative Photographer</p>
       </div>
-      <p class="text-lg md:text-xl font-headline leading-relaxed text-on-surface-variant max-w-xl"">
+      <p class="text-lg md:text-xl font-headline leading-relaxed text-on-surface-variant max-w-xl">
         I don't capture moments—I construct them. Every frame is an intentional composition where light, emotion, and silence are engineered into a single visual language. Stripped of excess, each image reveals depth, precision, and quiet intensity. Rooted in minimalism and driven by a forward-looking aesthetic, my work transforms the ordinary into something enduring—something designed to outlive the moment itself. This is not photography. This is controlled perception.
       </p>
       <div class="pt-4">
@@ -434,7 +551,7 @@
       <!-- Service 1: Wedding -->
       <div class="group cursor-pointer tilt-card">
         <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
-          <img alt="Wedding Photography" class="w-full h-full object-cover transition-transform duration-700" data-alt="luxury wedding banquet table with white flowers and crystal glasses, soft morning sunlight through window" src="/images/wed.jpg"/>
+          <img alt="Wedding Photography" class="w-full h-full object-cover transition-transform duration-700" data-alt="luxury wedding banquet table with white flowers and crystal glasses, soft morning sunlight through window" src="../images/wed.jpg"/>
         </div>
         <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Wedding</h4>
       </div>
@@ -442,7 +559,7 @@
       <!-- Service 2: Pre-wedding -->
       <div class="group cursor-pointer tilt-card">
         <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
-          <img alt="Pre-wedding Photography" class="w-full h-full object-cover transition-transform duration-700" data-alt="couple walking in a field of tall grass during golden hour, silhouettes against a glowing warm sun" src="/images/pre.jpg"/>
+          <img alt="Pre-wedding Photography" class="w-full h-full object-cover transition-transform duration-700" data-alt="couple walking in a field of tall grass during golden hour, silhouettes against a glowing warm sun" src="../images/pre.jpg"/>
         </div>
         <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Pre-wedding</h4>
       </div>
@@ -450,7 +567,7 @@
       <!-- Service 3: Bangle Wearing -->
       <div class="group cursor-pointer tilt-card">
         <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
-          <img alt="Bangle wearing" class="w-full h-full object-cover transition-transform duration-700" data-alt="close up of intricate gold jewellery on hands with henna patterns, bright vibrant traditional ceremony colors" src="/images/baby.jpg"/>
+          <img alt="Bangle wearing" class="w-full h-full object-cover transition-transform duration-700" data-alt="close up of intricate gold jewellery on hands with henna patterns, bright vibrant traditional ceremony colors" src="../images/baby.jpg"/>
         </div>
         <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Baby Shower</h4>
       </div>
@@ -458,7 +575,7 @@
       <!-- Service 4: Baby Naming -->
       <div class="group cursor-pointer tilt-card">
         <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
-          <img alt="Baby naming" class="w-full h-full object-cover transition-transform duration-700" data-alt="soft focused image of a baby's tiny hand grasping a finger, clean white nursery lighting and soft textiles" src="/images/name.jpg"/>
+          <img alt="Baby naming" class="w-full h-full object-cover transition-transform duration-700" data-alt="soft focused image of a baby's tiny hand grasping a finger, clean white nursery lighting and soft textiles" src="../images/name.jpg"/>
         </div>
         <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Naming Ceremony</h4>
       </div>
@@ -466,7 +583,7 @@
       <!-- Service 5: Birthday -->
       <div class="group cursor-pointer tilt-card">
         <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
-          <img alt="Birthday" class="w-full h-full object-cover transition-transform duration-700" data-alt="elegant minimalist birthday cake with single candle on a marble stand, clean studio lighting" src="/images/birth.jpg"/>
+          <img alt="Birthday" class="w-full h-full object-cover transition-transform duration-700" data-alt="elegant minimalist birthday cake with single candle on a marble stand, clean studio lighting" src="../images/birth.jpg"/>
         </div>
         <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Birthday</h4>
       </div>
@@ -474,7 +591,7 @@
       <!-- Service 6: Corporate -->
       <div class="group cursor-pointer tilt-card">
         <div class="aspect-square mb-6 overflow-hidden border border-outline-variant/20 p-2 group-hover:border-primary-container transition-colors duration-500">
-          <img alt="Corporate" class="w-full h-full object-cover transition-transform duration-700" data-alt="modern glass office building reflection at dusk, corporate professional aesthetic with deep blue tones" src="/images/cor.jpg"/>
+          <img alt="Corporate" class="w-full h-full object-cover transition-transform duration-700" data-alt="modern glass office building reflection at dusk, corporate professional aesthetic with deep blue tones" src="../images/cor.jpg"/>
         </div>
         <h4 class="text-center font-headline text-2xl italic text-on-surface group-hover:text-primary transition-colors">Corporate</h4>
       </div>
@@ -582,6 +699,15 @@
             <span>Vogue Portfolio</span>
           </a>
         </div>
+        <div class="flex items-start gap-4 text-stone-600 dark:text-stone-400 font-serif text-base tracking-wide">
+            <div class="contact-icon-wrapper bg-amber-50">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+            </div>
+            <span class="max-w-[240px] leading-relaxed">Puthupatti Bus Stand, Alangulam - 627851</span>
+          </div>
       </div>
 
     </div>
@@ -616,33 +742,36 @@
   const container = document.getElementById('portraitContainer');
   const content = document.getElementById('portraitContent');
 
-  let currentX = 0;
-  let currentY = 0;
-  let targetX = 0;
-  let targetY = 0;
+  if (container && content) {
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
 
-  container.addEventListener('mousemove', (e) => {
-    const rect = container.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    targetX = ((y - centerY) / centerY) * -15;
-    targetY = ((x - centerX) / centerX) * 15;
-  });
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      targetX = ((y - centerY) / centerY) * -15;
+      targetY = ((x - centerX) / centerX) * 15;
+    });
 
-  container.addEventListener('mouseleave', () => {
-    targetX = 0;
-    targetY = 0;
-  });
+    container.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+    });
 
-  function lerp() {
-    currentX += (targetX - currentX) * 0.1;
-    currentY += (targetY - currentY) * 0.1;
-    content.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
-    requestAnimationFrame(lerp);
+    function lerpPortrait() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+      content.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+      requestAnimationFrame(lerpPortrait);
+    }
+
+    lerpPortrait();
   }
-  lerp();
 
   // ===== Scroll Reveal Animation =====
   const revealElements = document.querySelectorAll('.reveal');
@@ -666,22 +795,352 @@
     if (hero) hero.classList.add('revealed');
   }, 200);
 
+  // ===== Hero Frame Sequence =====
+  const heroSequenceSection = document.getElementById('heroSequence');
+  const heroSequenceCanvas = document.getElementById('heroSequenceCanvas');
+  const heroSequenceFallback = document.getElementById('heroSequenceFallback');
+  const heroSequenceShell = document.getElementById('heroContent');
+  const heroSequenceFrame = document.getElementById('heroSequenceFrame');
+  const aboutSection = document.getElementById('about');
+
+  if (heroSequenceSection && heroSequenceCanvas && heroSequenceFallback) {
+    const canvasContext = heroSequenceCanvas.getContext('2d');
+    const frameCount = 80;
+    const framePrefix = '../Hero_camera/Robotic_camera_orbiting_202604011739_';
+    const loadedFrames = Array.from({ length: frameCount }, (_, index) => {
+      const image = new Image();
+      image.decoding = 'async';
+      image.src = `${framePrefix}${String(index).padStart(3, '0')}.jpg`;
+      return image;
+    });
+    let sequenceReady = false;
+    let activeFrameIndex = 0;
+    let currentSequenceFrame = 0;
+    let targetSequenceFrame = 0;
+    let targetSequenceProgress = 0;
+    let heroReleaseAnimating = false;
+    let heroReleaseTimeoutId = null;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const setHeroScrollLock = (locked) => {
+      document.documentElement.style.overflowY = locked ? 'hidden' : '';
+      document.body.style.overflowY = locked ? 'hidden' : '';
+    };
+
+    const syncHeroLockState = () => {
+      const shouldLock = window.innerWidth >= 768 && window.scrollY <= 2 && targetSequenceProgress < 0.9995;
+      setHeroScrollLock(shouldLock);
+    };
+
+    const releaseHeroToAbout = (deltaY = 120) => {
+      if (heroReleaseAnimating) {
+        return;
+      }
+
+      heroReleaseAnimating = true;
+      setHeroScrollLock(false);
+
+      const releaseDistance = window.innerWidth < 768
+        ? 72
+        : clamp(Math.abs(deltaY) * 0.16, 72, 128);
+      const aboutStart = aboutSection ? aboutSection.offsetTop : window.innerHeight;
+
+      window.scrollTo({
+        top: Math.min(releaseDistance, aboutStart),
+        behavior: 'smooth'
+      });
+
+      if (heroReleaseTimeoutId) {
+        window.clearTimeout(heroReleaseTimeoutId);
+      }
+
+      heroReleaseTimeoutId = window.setTimeout(() => {
+        heroReleaseAnimating = false;
+      }, 320);
+    };
+
+    const drawImageCover = (image) => {
+      const bounds = heroSequenceCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const width = Math.max(1, Math.floor(bounds.width * dpr));
+      const height = Math.max(1, Math.floor(bounds.height * dpr));
+
+      if (heroSequenceCanvas.width !== width || heroSequenceCanvas.height !== height) {
+        heroSequenceCanvas.width = width;
+        heroSequenceCanvas.height = height;
+      }
+
+      const canvasWidth = heroSequenceCanvas.width;
+      const canvasHeight = heroSequenceCanvas.height;
+      const matteInset = Math.round(Math.min(canvasWidth, canvasHeight) * (window.innerWidth < 768 ? 0.018 : 0.038));
+      const stageWidth = Math.max(1, canvasWidth - (matteInset * 2));
+      const stageHeight = Math.max(1, canvasHeight - (matteInset * 2));
+      const imageRatio = image.naturalWidth / image.naturalHeight;
+      const canvasRatio = stageWidth / stageHeight;
+
+      let drawWidth = stageWidth;
+      let drawHeight = stageHeight;
+      let offsetX = matteInset;
+      let offsetY = matteInset;
+
+      if (imageRatio > canvasRatio) {
+        drawHeight = stageHeight;
+        drawWidth = drawHeight * imageRatio;
+        offsetX = matteInset + ((stageWidth - drawWidth) / 2);
+      } else {
+        drawWidth = stageWidth;
+        drawHeight = drawWidth / imageRatio;
+        offsetY = matteInset + ((stageHeight - drawHeight) / 2);
+      }
+
+      canvasContext.clearRect(0, 0, canvasWidth, canvasHeight);
+      canvasContext.fillStyle = '#040507';
+      canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
+      canvasContext.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+    };
+
+    const syncHeroSectionHeight = () => {
+      heroSequenceSection.style.height = `${window.innerHeight}px`;
+    };
+
+    const updateHero3D = (progress) => {
+      if (heroSequenceShell) {
+        const rotateY = (progress - 0.5) * 3.4;
+        const rotateX = 1.6 - (progress * 1.6);
+        const translateY = -3 + (progress * 6);
+        const scale = 1.008 - (progress * 0.008);
+        heroSequenceShell.style.transform = `translate3d(0, ${translateY}px, 0) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+      }
+
+      if (heroSequenceFrame) {
+        const innerRotate = (progress - 0.5) * -1.2;
+        heroSequenceFrame.style.transform = `translateZ(0) rotateY(${innerRotate}deg) scale(1)`;
+      }
+    };
+
+    const findDrawableFrame = (index) => {
+      if (loadedFrames[index]?.complete && loadedFrames[index].naturalWidth) {
+        return loadedFrames[index];
+      }
+
+      for (let offset = 1; offset < frameCount; offset += 1) {
+        const previous = index - offset;
+        const next = index + offset;
+
+        if (previous >= 0 && loadedFrames[previous]?.complete && loadedFrames[previous].naturalWidth) {
+          return loadedFrames[previous];
+        }
+
+        if (next < frameCount && loadedFrames[next]?.complete && loadedFrames[next].naturalWidth) {
+          return loadedFrames[next];
+        }
+      }
+
+      return null;
+    };
+
+    const updateSequenceTarget = () => {
+      const progress = clamp(targetSequenceProgress, 0, 1);
+      targetSequenceFrame = progress * (frameCount - 1);
+
+      if (progress >= 0.9994) {
+        targetSequenceFrame = frameCount - 1;
+        currentSequenceFrame = frameCount - 1;
+        activeFrameIndex = frameCount - 1;
+
+        if (loadedFrames[frameCount - 1]?.complete && loadedFrames[frameCount - 1].naturalWidth) {
+          drawImageCover(loadedFrames[frameCount - 1]);
+        }
+      } else if (progress <= 0.001) {
+        targetSequenceFrame = 0;
+      }
+
+      updateHero3D(progress);
+      syncHeroLockState();
+    };
+
+    const animateSequence = () => {
+      currentSequenceFrame += (targetSequenceFrame - currentSequenceFrame) * 0.04;
+      const nextFrameIndex = Math.round(currentSequenceFrame);
+
+      if (sequenceReady && nextFrameIndex !== activeFrameIndex) {
+        const drawableFrame = findDrawableFrame(nextFrameIndex);
+
+        if (!drawableFrame) {
+          requestAnimationFrame(animateSequence);
+          return;
+        }
+
+        activeFrameIndex = nextFrameIndex;
+        drawImageCover(drawableFrame);
+      }
+
+      requestAnimationFrame(animateSequence);
+    };
+
+    const preloadSequence = () => {
+      const firstFrame = loadedFrames[0];
+      const activateFirstFrame = () => {
+        sequenceReady = true;
+        heroSequenceFallback.style.opacity = '0';
+        drawImageCover(firstFrame);
+        updateHero3D(0);
+      };
+
+      if (firstFrame.complete && firstFrame.naturalWidth) {
+        activateFirstFrame();
+      } else {
+        firstFrame.onload = activateFirstFrame;
+      }
+
+      firstFrame.onerror = () => {
+        console.warn('Hero frame sequence not found in ../Hero_camera/');
+        return;
+      };
+
+      loadedFrames.slice(1).forEach((image) => {
+        image.loading = 'eager';
+      });
+    };
+
+    const stepHeroSequence = (deltaY) => {
+      const progressStep = window.innerWidth < 768 ? 1 / 4000 : 1 / 6200;
+      targetSequenceProgress = clamp(targetSequenceProgress + (deltaY * progressStep), 0, 1);
+      updateSequenceTarget();
+    };
+
+    window.addEventListener('resize', () => {
+      syncHeroSectionHeight();
+      const drawableFrame = findDrawableFrame(activeFrameIndex);
+      if (sequenceReady && drawableFrame) {
+        drawImageCover(drawableFrame);
+      }
+      updateSequenceTarget();
+    });
+
+    window.addEventListener('wheel', (event) => {
+      const atHeroTop = window.scrollY <= 2;
+      const shouldReleaseHero =
+        atHeroTop &&
+        targetSequenceProgress >= 0.9995 &&
+        event.deltaY > 0;
+      const shouldDriveSequence =
+        atHeroTop &&
+        (targetSequenceProgress < 0.9995 || (targetSequenceProgress > 0 && event.deltaY < 0));
+
+      if (shouldReleaseHero) {
+        event.preventDefault();
+        releaseHeroToAbout(event.deltaY);
+        return;
+      }
+
+      if (!shouldDriveSequence) {
+        return;
+      }
+
+      event.preventDefault();
+      if (window.scrollY !== 0) {
+        window.scrollTo(0, 0);
+      }
+      stepHeroSequence(event.deltaY);
+    }, { passive: false });
+
+    window.addEventListener('keydown', (event) => {
+      const atHeroTop = window.scrollY <= 2;
+      const downKeys = ['ArrowDown', 'PageDown', ' '];
+      const upKeys = ['ArrowUp', 'PageUp'];
+
+      if (!atHeroTop) {
+        return;
+      }
+
+      if (downKeys.includes(event.key) && targetSequenceProgress >= 0.9995) {
+        event.preventDefault();
+        releaseHeroToAbout(160);
+        return;
+      }
+
+      if (downKeys.includes(event.key) && targetSequenceProgress < 0.9995) {
+        event.preventDefault();
+        stepHeroSequence(180);
+      }
+
+      if (upKeys.includes(event.key) && targetSequenceProgress > 0) {
+        event.preventDefault();
+        stepHeroSequence(-180);
+      }
+    });
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 2) {
+        setHeroScrollLock(false);
+      } else {
+        syncHeroLockState();
+      }
+    }, { passive: true });
+
+    syncHeroSectionHeight();
+    updateSequenceTarget();
+    preloadSequence();
+    animateSequence();
+  }
+
   // ===== Mobile Menu =====
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileMenuClose = document.getElementById('mobileMenuClose');
 
-  mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
-    mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
-  });
+  if (mobileMenuBtn && mobileMenu && mobileMenuClose) {
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
+      mobileMenu.classList.add('opacity-100', 'pointer-events-auto');
+    });
 
-  function closeMobileMenu() {
-    mobileMenu.classList.add('opacity-0', 'pointer-events-none');
-    mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+    window.closeMobileMenu = function closeMobileMenu() {
+      mobileMenu.classList.add('opacity-0', 'pointer-events-none');
+      mobileMenu.classList.remove('opacity-100', 'pointer-events-auto');
+    };
+
+    mobileMenuClose.addEventListener('click', window.closeMobileMenu);
   }
 
-  mobileMenuClose.addEventListener('click', closeMobileMenu);
+  // ===== Navbar Active State =====
+  const navLinks = document.querySelectorAll('[data-nav-link]');
+  const sectionsForNav = ['#gallery', '#about', '#services', '#contact']
+    .map(hash => document.querySelector(hash))
+    .filter(Boolean);
+
+  const setActiveNav = (hash) => {
+    navLinks.forEach(link => {
+      link.classList.toggle('nav-link-active', link.getAttribute('href') === hash);
+    });
+  };
+
+  if (navLinks.length) {
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        setActiveNav(link.getAttribute('href'));
+      });
+    });
+  }
+
+  if (sectionsForNav.length) {
+    const navObserver = new IntersectionObserver((entries) => {
+      const visibleEntry = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (visibleEntry?.target?.id) {
+        setActiveNav(`#${visibleEntry.target.id}`);
+      }
+    }, {
+      threshold: [0.35, 0.6, 0.8],
+      rootMargin: '-20% 0px -35% 0px'
+    });
+
+    sectionsForNav.forEach(section => navObserver.observe(section));
+  }
 
   // ===== Smooth Scroll =====
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
