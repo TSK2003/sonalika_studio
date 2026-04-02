@@ -112,6 +112,8 @@
   .tilt-card {
     transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     transform-style: preserve-3d;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .tilt-card:hover {
     transform: rotateX(5deg) rotateY(5deg) scale(1.05);
@@ -122,8 +124,16 @@
   }
 
   /* ===== Gallery Scroll ===== */
+  .animate-infinite-scroll {
+    will-change: transform;
+    backface-visibility: hidden;
+  }
   .animate-infinite-scroll:hover {
     animation-play-state: paused;
+  }
+  .gallery-item img {
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
   /* ===== Portrait Parallax ===== */
@@ -134,6 +144,8 @@
   .portrait-parallax-content {
     transition: transform 0.1s ease-out;
     transform-style: preserve-3d;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .portrait-image-wrapper {
     overflow: hidden;
@@ -141,6 +153,7 @@
   }
   .portrait-image-zoom {
     transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
   }
   .portrait-parallax-container:hover .portrait-image-zoom {
     transform: scale(1.08);
@@ -333,7 +346,9 @@
     perspective: 2200px;
     transform-style: preserve-3d;
     will-change: transform;
+    backface-visibility: hidden;
     transform-origin: center center;
+    contain: layout style paint;
   }
   .hero-sequence-frame {
     position: relative;
@@ -344,6 +359,8 @@
       linear-gradient(180deg, rgba(8, 10, 14, 0.96), rgba(4, 5, 8, 1)),
       #050505;
     transform-style: preserve-3d;
+    will-change: transform;
+    backface-visibility: hidden;
   }
   .hero-sequence-frame::before {
     content: '';
@@ -373,6 +390,8 @@
   .hero-sequence-canvas {
     position: relative;
     z-index: 2;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
   }
   .hero-sequence-fallback {
     position: absolute;
@@ -512,31 +531,31 @@
       <!-- Original set -->
       <div class="flex gap-6 md:gap-8 px-4 items-center">
         <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Wedding scene" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/1.jpeg"/>
+          <img alt="Wedding scene" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/1.jpeg"/>
         </div>
         <div class="shrink-0 w-[55vw] md:w-[30vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Editorial fashion" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/2.jpeg"/>
+          <img alt="Editorial fashion" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/2.jpeg"/>
         </div>
         <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Landscape abstract" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/3.jpeg"/>
+          <img alt="Landscape abstract" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/3.jpeg"/>
         </div>
         <div class="shrink-0 w-[45vw] md:w-[26vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Wedding ceremony" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/Wedding.jpeg"/>
+          <img alt="Wedding ceremony" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/Wedding.jpeg"/>
         </div>
       </div>
       <!-- Duplicate set for seamless loop -->
       <div class="flex gap-6 md:gap-8 px-4 items-center">
         <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Wedding scene" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/1.jpeg"/>
+          <img alt="Wedding scene" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/1.jpeg"/>
         </div>
         <div class="shrink-0 w-[55vw] md:w-[30vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Editorial fashion" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/2.jpeg"/>
+          <img alt="Editorial fashion" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/2.jpeg"/>
         </div>
         <div class="shrink-0 w-[40vw] md:w-[22vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Landscape abstract" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/3.jpeg"/>
+          <img alt="Landscape abstract" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/3.jpeg"/>
         </div>
         <div class="shrink-0 w-[45vw] md:w-[26vw] h-[50vh] md:h-[60vh] bg-surface-variant overflow-hidden group shadow-lg relative gallery-item">
-          <img alt="Wedding ceremony" class="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000" src="../images/Wedding.jpeg"/>
+          <img alt="Wedding ceremony" class="w-full h-full object-cover scale-[1.03] group-hover:scale-100 transition-transform duration-700" src="../images/Wedding.jpeg"/>
         </div>
       </div>
     </div>
@@ -723,7 +742,7 @@
     <!-- Bottom Bar -->
     <div class="mt-24 pt-8 border-t border-primary/5 flex flex-col md:flex-row justify-between items-center gap-6">
       <div class="font-serif text-[11px] tracking-[0.26em] text-stone-400 uppercase">
-        © 2024 Sonalika Photography. All rights reserved.
+        © 2026 Sonalika Photography. All rights reserved.
       </div>
       <div class="flex gap-8 text-[11px] font-label uppercase tracking-[0.22em] text-stone-400">
         <a class="hover:text-primary transition-colors" href="#">Privacy</a>
@@ -746,7 +765,7 @@
 <!-- Scripts -->
 <!-- ============================================ -->
 <script>
-  // ===== Portrait Parallax Interaction =====
+  // ===== Portrait Parallax Interaction (Viewport-Gated) =====
   const container = document.getElementById('portraitContainer');
   const content = document.getElementById('portraitContent');
 
@@ -755,6 +774,8 @@
     let currentY = 0;
     let targetX = 0;
     let targetY = 0;
+    let portraitAnimating = false;
+    let portraitVisible = false;
 
     container.addEventListener('mousemove', (e) => {
       const rect = container.getBoundingClientRect();
@@ -764,6 +785,7 @@
       const centerY = rect.height / 2;
       targetX = ((y - centerY) / centerY) * -15;
       targetY = ((x - centerX) / centerX) * 15;
+      if (!portraitAnimating && portraitVisible) startPortraitLoop();
     });
 
     container.addEventListener('mouseleave', () => {
@@ -771,14 +793,45 @@
       targetY = 0;
     });
 
+    function startPortraitLoop() {
+      if (portraitAnimating) return;
+      portraitAnimating = true;
+      lerpPortrait();
+    }
+
     function lerpPortrait() {
       currentX += (targetX - currentX) * 0.1;
       currentY += (targetY - currentY) * 0.1;
       content.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
-      requestAnimationFrame(lerpPortrait);
+
+      // Stop loop when values have converged and target is zero (mouse left)
+      const isIdle = Math.abs(targetX - currentX) < 0.01 && Math.abs(targetY - currentY) < 0.01;
+      if (isIdle && targetX === 0 && targetY === 0) {
+        currentX = 0;
+        currentY = 0;
+        content.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        portraitAnimating = false;
+        return;
+      }
+
+      if (portraitVisible) {
+        requestAnimationFrame(lerpPortrait);
+      } else {
+        portraitAnimating = false;
+      }
     }
 
-    lerpPortrait();
+    // Only animate when the About section is visible
+    const portraitObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        portraitVisible = entry.isIntersecting;
+        if (portraitVisible && !portraitAnimating && (targetX !== 0 || targetY !== 0)) {
+          startPortraitLoop();
+        }
+      });
+    }, { threshold: 0.05 });
+
+    portraitObserver.observe(container);
   }
 
   // ===== Scroll Reveal Animation =====
@@ -826,8 +879,6 @@
     let currentSequenceFrame = 0;
     let targetSequenceFrame = 0;
     let targetSequenceProgress = 0;
-    let heroReleaseAnimating = false;
-    let heroReleaseTimeoutId = null;
     let touchSequenceY = null;
 
     const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
@@ -842,42 +893,12 @@
       setHeroScrollLock(shouldLock);
     };
 
-    const releaseHeroToAbout = (deltaY = 120) => {
-      if (heroReleaseAnimating) {
-        return;
-      }
-
-      heroReleaseAnimating = true;
-      setHeroScrollLock(false);
-
-      const releaseDistance = window.innerWidth < 768
-        ? 96
-        : clamp(Math.abs(deltaY) * 0.26, 108, 180);
-      const aboutStart = aboutSection ? aboutSection.offsetTop : window.innerHeight;
-      window.scrollTo(0, Math.min(releaseDistance, aboutStart));
-
-      if (heroReleaseTimeoutId) {
-        window.clearTimeout(heroReleaseTimeoutId);
-      }
-
-      heroReleaseTimeoutId = window.setTimeout(() => {
-        heroReleaseAnimating = false;
-      }, 120);
-    };
 
     const drawImageCover = (image) => {
-      const bounds = heroSequenceCanvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      const width = Math.max(1, Math.floor(bounds.width * dpr));
-      const height = Math.max(1, Math.floor(bounds.height * dpr));
-
-      if (heroSequenceCanvas.width !== width || heroSequenceCanvas.height !== height) {
-        heroSequenceCanvas.width = width;
-        heroSequenceCanvas.height = height;
-      }
-
       const canvasWidth = heroSequenceCanvas.width;
       const canvasHeight = heroSequenceCanvas.height;
+      if (canvasWidth < 1 || canvasHeight < 1) return;
+
       const isMobileViewport = window.innerWidth < 768;
       const matteInset = Math.round(Math.min(canvasWidth, canvasHeight) * (isMobileViewport ? 0.032 : 0.038));
       const stageWidth = Math.max(1, canvasWidth - (matteInset * 2));
@@ -919,6 +940,21 @@
       canvasContext.fillStyle = '#040507';
       canvasContext.fillRect(0, 0, canvasWidth, canvasHeight);
       canvasContext.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+    };
+
+    // Extracted: DPR-aware canvas sizing — called only on resize/init
+    const syncCanvasSize = () => {
+      const bounds = heroSequenceCanvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      const width = Math.max(1, Math.floor(bounds.width * dpr));
+      const height = Math.max(1, Math.floor(bounds.height * dpr));
+
+      if (heroSequenceCanvas.width !== width || heroSequenceCanvas.height !== height) {
+        heroSequenceCanvas.width = width;
+        heroSequenceCanvas.height = height;
+        return true; // resized
+      }
+      return false;
     };
 
     const syncHeroSectionHeight = () => {
@@ -984,7 +1020,15 @@
     };
 
     const animateSequence = () => {
-      currentSequenceFrame += (targetSequenceFrame - currentSequenceFrame) * 0.04;
+      const delta = targetSequenceFrame - currentSequenceFrame;
+      // Faster lerp: 0.12 instead of 0.04 for snappy response
+      currentSequenceFrame += delta * 0.12;
+
+      // Snap when very close to target to prevent sub-pixel flicker
+      if (Math.abs(delta) < 0.05) {
+        currentSequenceFrame = targetSequenceFrame;
+      }
+
       const nextFrameIndex = Math.round(currentSequenceFrame);
 
       if (sequenceReady && nextFrameIndex !== activeFrameIndex) {
@@ -999,7 +1043,22 @@
         drawImageCover(drawableFrame);
       }
 
-      requestAnimationFrame(animateSequence);
+      // Only continue loop when not fully converged
+      const isConverged = nextFrameIndex === Math.round(targetSequenceFrame) && Math.abs(delta) < 0.05;
+      if (!isConverged) {
+        requestAnimationFrame(animateSequence);
+      } else {
+        sequenceAnimating = false;
+      }
+    };
+
+    // Gated animation loop — only runs when there's work to do
+    let sequenceAnimating = false;
+    const ensureSequenceAnimating = () => {
+      if (!sequenceAnimating) {
+        sequenceAnimating = true;
+        requestAnimationFrame(animateSequence);
+      }
     };
 
     const preloadSequence = () => {
@@ -1028,13 +1087,15 @@
     };
 
     const stepHeroSequence = (deltaY) => {
-      const progressStep = window.innerWidth < 768 ? 1 / 4000 : 1 / 6200;
+      const progressStep = window.innerWidth < 768 ? 1 / 1000 : 1 / 1200;
       targetSequenceProgress = clamp(targetSequenceProgress + (deltaY * progressStep), 0, 1);
       updateSequenceTarget();
+      ensureSequenceAnimating();
     };
 
     window.addEventListener('resize', () => {
       syncHeroSectionHeight();
+      syncCanvasSize();
       const drawableFrame = findDrawableFrame(activeFrameIndex);
       if (sequenceReady && drawableFrame) {
         drawImageCover(drawableFrame);
@@ -1044,17 +1105,23 @@
 
     window.addEventListener('wheel', (event) => {
       const atHeroTop = window.scrollY <= 2;
+      
+      let stepDelta = event.deltaY;
+      if (event.deltaMode === 1) stepDelta *= 33;
+      else if (event.deltaMode === 2) stepDelta *= window.innerHeight;
+
       const shouldReleaseHero =
         atHeroTop &&
         targetSequenceProgress >= 0.9995 &&
-        event.deltaY > 0;
+        stepDelta > 0;
+        
       const shouldDriveSequence =
         atHeroTop &&
-        (targetSequenceProgress < 0.9995 || (targetSequenceProgress > 0 && event.deltaY < 0));
+        (targetSequenceProgress < 0.9995 || (targetSequenceProgress > 0 && stepDelta < 0));
 
       if (shouldReleaseHero) {
-        event.preventDefault();
-        releaseHeroToAbout(event.deltaY);
+        // Unlock scroll naturally without preventing default
+        setHeroScrollLock(false);
         return;
       }
 
@@ -1063,10 +1130,13 @@
       }
 
       event.preventDefault();
-      if (window.scrollY !== 0) {
-        window.scrollTo(0, 0);
+
+      // Amplification for touchpads (small fast deltas) to reduce "stuck" feeling
+      if (Math.abs(stepDelta) < 40) {
+        stepDelta *= 1.5;
       }
-      stepHeroSequence(event.deltaY);
+
+      stepHeroSequence(stepDelta);
     }, { passive: false });
 
     window.addEventListener('keydown', (event) => {
@@ -1079,8 +1149,8 @@
       }
 
       if (downKeys.includes(event.key) && targetSequenceProgress >= 0.9995) {
-        event.preventDefault();
-        releaseHeroToAbout(160);
+        // Unlock scroll and allow native key scroll behavior to pass
+        setHeroScrollLock(false);
         return;
       }
 
@@ -1122,8 +1192,8 @@
         targetSequenceProgress < 0.9995 || (targetSequenceProgress > 0 && deltaY < 0);
 
       if (shouldReleaseHero) {
-        event.preventDefault();
-        releaseHeroToAbout(deltaY * 5);
+        // Unlock scroll naturally and let touch move naturally scroll down
+        setHeroScrollLock(false);
         touchSequenceY = currentTouchY;
         return;
       }
@@ -1133,7 +1203,7 @@
       }
 
       event.preventDefault();
-      stepHeroSequence(deltaY * 7);
+      stepHeroSequence(deltaY * 4.5); // Smoother mobile step 
       touchSequenceY = currentTouchY;
     }, { passive: false });
 
@@ -1150,9 +1220,10 @@
     }, { passive: true });
 
     syncHeroSectionHeight();
+    syncCanvasSize();
     updateSequenceTarget();
     preloadSequence();
-    animateSequence();
+    ensureSequenceAnimating();
   }
 
   // ===== Mobile Menu =====
